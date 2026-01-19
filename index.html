@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cronograma — DISEÑO DE PRODUCTOS E INNOVACIÓN EN TI (2026-I)</title>
+  <style>
+    :root{
+      --bg:#0b0f14;
+      --card:#111826;
+      --muted:#a7b0bf;
+      --text:#e9eef7;
+      --line:rgba(255,255,255,.10);
+      --accent:#ffde59;        /* amarillo */
+      --accent2:#4aa3ff;       /* azul */
+      --danger:#ff5a6b;        /* rojo suave */
+      --ok:#34d399;            /* verde */
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius:16px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:var(--font);
+      background: radial-gradient(1200px 600px at 20% -10%, rgba(255,222,89,.14), transparent 55%),
+                  radial-gradient(900px 500px at 90% 10%, rgba(74,163,255,.16), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.35;
+    }
+    .wrap{
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 28px 18px 60px;
+    }
+    header{
+      display:flex;
+      gap:16px;
+      align-items:flex-end;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      margin-bottom:18px;
+    }
+    .title h1{
+      margin:0;
+      font-size: clamp(22px, 3vw, 34px);
+      letter-spacing:.2px;
+    }
+    .title p{
+      margin:8px 0 0;
+      color:var(--muted);
+      max-width: 70ch;
+    }
+    .meta{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .pill{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      padding:8px 12px;
+      border-radius: 999px;
+      color:var(--muted);
+      font-size: 13px;
+      white-space:nowrap;
+    }
+    .pill strong{color:var(--text); font-weight:650}
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:14px;
+      margin-top:14px;
+    }
+    @media (min-width: 860px){
+      .grid{grid-template-columns: 1fr 1fr;}
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .card .head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:14px 16px;
+      border-bottom:1px solid var(--line);
+      background: rgba(0,0,0,.18);
+    }
+    .wk{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width: 0;
+    }
+    .badge{
+      font-size: 12px;
+      font-weight: 750;
+      letter-spacing:.3px;
+      padding:6px 10px;
+      border-radius: 999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      flex: 0 0 auto;
+    }
+    .badge.eval{ border-color: rgba(74,163,255,.35); background: rgba(74,163,255,.12); color:#dcebff; }
+    .badge.major{ border-color: rgba(255,90,107,.35); background: rgba(255,90,107,.14); color:#ffe3e7; }
+    .badge.break{ border-color: rgba(255,222,89,.35); background: rgba(255,222,89,.14); color:#fff2bf; }
+    .date{
+      color: var(--muted);
+      font-size: 13px;
+      white-space: nowrap;
+      flex: 0 0 auto;
+    }
+    .content{
+      padding:14px 16px 16px;
+    }
+    .topic{
+      margin:0;
+      font-weight: 750;
+      font-size: 15px;
+    }
+    .desc{
+      margin:8px 0 0;
+      color: var(--muted);
+      font-size: 13.5px;
+    }
+    .extra{
+      margin:10px 0 0;
+      padding:10px 12px;
+      border-radius: 12px;
+      border: 1px dashed rgba(255,222,89,.45);
+      background: rgba(255,222,89,.08);
+      color: #fff2bf;
+      font-size: 13.5px;
+    }
+    .footer{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-top: 22px;
+      flex-wrap: wrap;
+    }
+    .note{
+      color: var(--muted);
+      font-size: 13px;
+      max-width: 85ch;
+    }
+    .inst{
+      margin-top: 18px;
+      padding: 14px 16px;
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+    }
+    .inst h2{
+      margin:0 0 10px;
+      font-size: 16px;
+      letter-spacing:.2px;
+    }
+    .inst ul{
+      margin:0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 13.5px;
+    }
+    .inst li{margin:6px 0}
+    .print{
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 12.5px;
+    }
+    a{color: var(--accent2)}
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="title">
+        <h1>Cronograma — DISEÑO DE PRODUCTOS E INNOVACIÓN EN TI</h1>
+        <p>Semestre <strong>2026-I</strong> · 1 clase por semana (miércoles). Cronograma con fechas ajustadas según calendario institucional.</p>
+      </div>
+      <div class="meta">
+        <div class="pill"><strong>Inicio de clases:</strong> Ene. 20</div>
+        <div class="pill"><strong>Último día de clases:</strong> May. 23</div>
+        <div class="pill"><strong>Receso:</strong> Mar. 16–21</div>
+      </div>
+    </header>
+
+    <div class="grid">
+
+      <!-- Semana 1 -->
+      <section class="card">
+        <div class="head">
+          <div class="wk">
+            <span class="badge">Semana 1</span>
+          </div>
+          <div class="date">Mié. 21 de enero, 2026</div>
+        </div>
+        <div class="content">
+          <p class="topic">Presentación del curso, canvas, modelo de negocio y tips para ideas de producto</p>
+          <p class="desc">Introducción al curso, metodologías de innovación y conformación de grupos</p>
+          <p class="desc"><strong>—</strong></p>
+        </div>
+      </section>
+
+      <!-- Semana 2 -->
+      <section class="card">
+        <div class="head">
+          <div class="wk">
+            <span class="badge">Semana 2</span>
+          </div>
+          <div class="date">Mié. 28 de enero, 2026</div>
+        </div>
+        <div class="content">
+          <p class="topic">Lean canvas, Generative AI 101, conformación de grupos</p>
+          <p class="desc">Fundamentos de lean canvas, introducción a IA generativa y formación de equipos</p>
+          <p class="desc"><strong>—</strong></p>
+        </div>
+      </section>
+
+      <!-- Semana 3 -->
+      <section class="card">
+        <div class="head">
+          <div class="wk">
+            <span class="badge">Semana 3</span>
+          </div>
+          <div class="date">Mié. 4 de febrero, 2026</div>
+        </div>
+        <div class="content">
+          <p class="topic">Modelos de monetización, análisis de ejemplos de empresas de tecnología y mesa redonda discusión de ideas de proyecto</p>
+          <p class="desc">Estrategias de monetización, casos de estudio y discusión de proyectos</p>
+          <p class="desc"><strong>—</strong></p>
+        </div>
+      </section>
+
+      <!-- Semana 4 -->
+      <section class="card">
+        <div class="head">
+          <div class="wk">
+            <span class="badge eval">Semana 4</span>
+          </div>
+          <div class="date">Mié. 11 de febrero, 2026</div>
+        </div>
+        <div class="content">
+          <p class="topic">Presentación de pitch de problema a solucionar</p>
+          <p class="desc">Presentación del pitch del problema a solucionar</p>
+          <p class="desc"><strong>10%</strong></p>
+        </div>
+      </section>
+
+      <!-- Semana 5 -->
+      <section class="card">
+        <div class="head">
+          <div class="wk">
+            <span class="badge eval">Semana 5</span>
+          </div>
+          <div class="date">Mié. 18 de febrero, 2026</div>
+        </div>
+        <div class="content">
+          <p class="topic">Lean canvas - análisis de ejemplos en empresas de tecnología, Running Lean Part 1</p>
+          <p class="desc">Análisis de ejemplos en empresas de tecnología, Running Lean Part 1</p>
+          <p class="desc"><strong>10%</strong></p>
+        </div>
+      </section>
+
+      <!-- Semana 6 -->
+      <section class="card">
+        <div class="head">
+          <div class="wk">
+            <span class="badge">Semana 6</span>
+          </div>
+          <div class="date">Mié. 25 de febrero, 2026</div>
+        </div>
+        <div class="content">
+          <p class="topic">MVP and UI/UX, Agentic design</p>
+          <p class="desc">Desarrollo de MVP, diseño de interfaz de usuario y diseño agéntico</p>
+          <div class="extra">LLM + RAG + Function Calling</div>
+          <p class="desc" style="margin-top:10px;"><strong>—</strong></p>
+        </div>
+      </section>
+
+      <!-- Semana 7 -->
+      <section class="card">
+        <div class="head">
+          <div class="wk">
+            <span class="badge">Semana 7</span>
+          </div>
+          <div class="date">Mié. 4 de marzo, 2026</div>
+        </div>
+        <div class="content">
+          <p class="topic">Presentaciones de prueba</p>
+          <p class="desc">Pruebas de presentación y feedback</p>
+          <p class="desc"><strong>—</strong></p>
+        </div>
+      </section>
+
+      <!-- Semana 8 -->
+      <section class="card">
+        <div class="head">
+          <div class="wk">
+            <span class="badge major">Semana 8</span>
+          </div>
+          <div class="date">Mié. 11 de marzo, 2026</div>
+        </div>
+        <div class="content">
+          <p class="topic">Primera entrega del proyecto + Calificación jurados</p>
+          <p class="desc">Presentación lean canvas, primera validación con expertos, entrevistas del problema, MVP semi funcional</p>
+          <p class="desc"><strong>30%</strong></p>
+        </div>
+      </section>
+
+      <!-- Receso -->
+      <section class="card">
+        <div class="head">
+          <div class="wk">
+            <span class="badge break">Receso</span>
+          </div>
+          <div class="date">Mié. 18 de marzo, 2026</div>
+        </div>
+        <div class="content">
+          <p class="topic">Semana de Receso</p>
+          <p class="desc">Semana de receso institucional - No hay clases</p>
+          <p class="desc"><strong>—</strong></p>
+        </div>
+      </section>
+
+      <!-- Semana 9 -->
+      <section class="card">
+        <div class="head">
+          <div class="wk">
+            <span class="badge">Semana 9</span>
+          </div>
+          <div class="date">Mié. 25 de marzo, 2026</div>
+        </div>
+        <div class="content">
+          <p class="topic">Buenas prácticas para un gran pitch y VC funding vs bootstrapping</p>
+          <p class="desc">Técnicas de presentación, financiamiento y estrategias de crecimiento</p>
+          <p class="desc"><strong>—</strong></p>
+        </div>
+      </section>
+
+      <!-- Semana 10 -->
+      <section class="card">
+        <div class="head">
+          <div class="wk">
+            <span class="badge">Semana 10</span>
+          </div>
+          <div class="date">Mié. 1 de abril, 2026</div>
+        </div>
+        <div class="content">
+          <p class="topic">Propiedad intelectual, registro de software</p>
+          <p class="desc">Protección de propiedad intelectual y registro de software</p>
+          <p class="desc"><strong>—</strong></p>
+        </div>
+      </section>
+
+      <!-- Semana 11 -->
+      <section class="card">
+        <div class="head">
+          <div class="wk">
+            <span class="badge">Semana 11</span>
+          </div>
+          <div class="date">Mié. 8 de abril, 2026</div>
+        </div>
+        <div class="content">
+          <p class="topic">Landing pages y tracción + trabajo en landing pages</p>
+          <p class="desc">Desarrollo de landing pages y estrategias de tracción</p>
+          <p class="desc"><strong>—</strong></p>
+        </div>
+      </section>
+
+      <!-- Semana 12 -->
+      <section class="card">
+        <div class="head">
+          <div class="wk">
+            <span class="badge">Semana 12</span>
+          </div>
+          <div class="date">Mié. 15 de abril, 2026</div>
+        </div>
+        <div class="content">
+          <p class="topic">SEO, SEM y funeles de conversión</p>
+          <p class="desc">Optimización para motores de búsqueda, marketing digital y conversión</p>
+          <p class="desc"><strong>—</strong></p>
+        </div>
+      </section>
+
+      <!-- Semana 13 -->
+      <section class="card">
+        <div class="head">
+          <div class="wk">
+            <span class="badge eval">Semana 13</span>
+          </div>
+          <div class="date">Mié. 22 de abril, 2026</div>
+        </div>
+        <div class="content">
+          <p class="topic">Trabajo grupal en proyectos y entrega landing page</p>
+          <p class="desc">Trabajo grupal en proyectos y entrega landing page</p>
+          <p class="desc"><strong>10%</strong></p>
+        </div>
+      </section>
+
+      <!-- Semana 14 -->
+      <section class="card">
+        <div class="head">
+          <div class="wk">
+            <span class="badge">Semana 14</span>
+          </div>
+          <div class="date">Mié. 29 de abril, 2026</div>
+        </div>
+        <div class="content">
+          <p class="topic">Herramientas de análisis e indicadores + análisis feedback a la fecha</p>
+          <p class="desc">Análisis de datos, métricas y feedback de usuarios</p>
+          <p class="desc"><strong>—</strong></p>
+        </div>
+      </section>
+
+      <!-- Semana 15 -->
+      <section class="card">
+        <div class="head">
+          <div class="wk">
+            <span class="badge eval">Semana 15</span>
+          </div>
+          <div class="date">Mié. 6 de mayo, 2026</div>
+        </div>
+        <div class="content">
+          <p class="topic">Semana de innovación</p>
+          <p class="desc">Presentación en la semana de innovación: Landing page, recolección de datos de interés, MVP funcional, video del MVP</p>
+          <p class="desc"><strong>10%</strong></p>
+        </div>
+      </section>
+
+      <!-- Semana 16 -->
+      <section class="card">
+        <div class="head">
+          <div class="wk">
+            <span class="badge major">Semana 16</span>
+          </div>
+          <div class="date">Mié. 20 de mayo, 2026</div>
+        </div>
+        <div class="content">
+          <p class="topic">Segunda Entrega Proyecto + Calificación jurados</p>
+          <p class="desc">Pitch final, MVP funcional, resultados recolección de datos y feedback de usuarios</p>
+          <p class="desc"><strong>30%</strong></p>
+        </div>
+      </section>
+
+    </div>
+
+    <section class="inst" aria-label="Fechas institucionales">
+      <h2>Fechas institucionales 2026-I</h2>
+      <ul>
+        <li><strong>Inicio de clases:</strong> Ene. 20</li>
+        <li><strong>Semana de receso:</strong> Mar. 16 – Mar. 21</li>
+        <li><strong>Último día de clases:</strong> May. 23</li>
+        <li><strong>Exámenes finales:</strong> May. 25 – May. 30</li>
+        <li><strong>Evaluación de cursos y Profesores:</strong> May. 04 – May. 22</li>
+      </ul>
+      <div class="print">Tip: si lo vas a entregar como PDF, imprime desde el navegador (Ctrl+P) → “Guardar como PDF”.</div>
+    </section>
+
+    <div class="footer">
+      <div class="note">
+        Nota: este cronograma está diseñado para <strong>una sesión semanal los miércoles</strong>.  
+        La semana de receso institucional cubre el <strong>miércoles 18 de marzo</strong>, por lo que no hay clase ese día.
+      </div>
+    </div>
+  </div>
+</body>
+</html>
